@@ -27,13 +27,20 @@ async function run(){
         app.get('/products/:id', async (req, res) => {
             const id = req.params.id;
             const query = {_id:ObjectId(id)}
-            const service= await stockProduct.findOne(query);
-           res.send(service) 
+            const products= await stockProduct.findOne(query);
+           res.send(products) 
         });
         //add products
         app.post('/products',async(req,res)=>{
             const doc=req.body;
             const result = await stockProduct.insertOne(doc)
+            res.send(result)
+        });
+        //DELETE
+        app.delete('/products/:id', async(req,res)=>{
+            const id =req.params.id;
+            const query ={_id:ObjectId(id)};
+            const result =await stockProduct.deleteOne(query);
             res.send(result)
         })
 
