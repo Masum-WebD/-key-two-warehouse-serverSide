@@ -44,22 +44,30 @@ async function run(){
             res.send(result)
         })
 
+        
+
         // delivered (update)
         app.put('/products/:id', async(req,res)=>{
             const id =req.params.id;
-            const updateProduct=req.body;
+            const updateProduct=req.body.quantities;
             const filter={_id:ObjectId(id)};
             const options ={upsert:true};
             const updateDoc={
                 $set:{
-                    quantity:updateProduct.quantity
+                    quantity:updateProduct
                 },
 
             };
             const result = await stockProduct.updateOne(filter, updateDoc,options);
             res.send(result)
-        })
-
+        });
+        app.post('/addProducts',async(req,res)=>{
+            const email =req.query.email;
+            const query ={email}
+            const cursor = stockProduct.findOne(query);
+            const addProducts =await cursor.toArray();
+            res.send(addProducts);
+        });
 
 
         
