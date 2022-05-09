@@ -84,7 +84,7 @@ run().catch(console.dir)
 
 
 app.get('/',(req,res)=>{
-    res.send('yes running key two telecom server site');
+    res.send('yes running key-two-telecom server site');
 })
 
 app.listen(port,()=>{
