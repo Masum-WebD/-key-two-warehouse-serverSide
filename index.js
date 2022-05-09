@@ -22,7 +22,7 @@ async function run(){
             const query ={}
             const cursor = stockProduct.find(query);
             const products =await cursor.toArray();
-            res.send(products);
+            res.json(products);
         });
         app.get('/products/:id', async (req, res) => {
             const id = req.params.id;
