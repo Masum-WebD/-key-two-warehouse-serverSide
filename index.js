@@ -64,7 +64,7 @@ async function run(){
         app.post('/addProducts',async(req,res)=>{
             const email =req.query.email;
             const query ={email}
-            const cursor = stockProduct.findOne(query);
+            const cursor = stockProduct.find(query);
             const addProducts =await cursor.toArray();
             res.send(addProducts);
         });
@@ -90,5 +90,3 @@ app.get('/',(req,res)=>{
 app.listen(port,()=>{
     console.log('listening on port 5000');
 })
-//zero-point
-//fGs8uyr2WrvmTDT5
