@@ -1,13 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-// const { MongoClient, ServerApiVersion, ObjectId, ChangeStream } = require("mongodb");
-// const dbConnect = require("./Utils/dbConnect");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
 const app = express();
 const productRouter = require("./Routes/products.route");
-const viewCount = require("./middleware/viewCount");
-const { rateLimit } = require("express-rate-limit");
 const errorHandler = require("./middleware/errorHnadler");
 const { connectToServer } = require("./Utils/dbConnect");
 
